@@ -1,0 +1,24 @@
+name: SentinelAC
+version: 1.0-Alpha
+main: com.yourname.anticheat.AntiCheatPlugin
+api-version: 1.21
+author: EyeSaber
+description: Advanced AntiCheat Plugin for Minecraft
+
+commands:
+  anticheat:
+    description: Main anticheat command
+    usage: /anticheat [reload|info|violations|clear|alerts]
+    aliases: [ac, sentinel]
+    permission: anticheat.admin
+
+permissions:
+  anticheat.admin:
+    description: Access to all anticheat commands
+    default: op
+  anticheat.bypass:
+    description: Bypass all anticheat checks
+    default: false
+  anticheat.alerts:
+    description: Receive violation alerts
+    default: op
