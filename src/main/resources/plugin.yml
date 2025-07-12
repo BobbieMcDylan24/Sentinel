@@ -1,0 +1,75 @@
+name: SentinelAC
+version: 1.0.0
+description: Advanced Anti-Cheat plugin for Minecraft servers
+author: SentinelAC Team
+main: com.sentinelac.SentinelAC
+api-version: 1.19
+depend: [ProtocolLib]
+
+commands:
+  sentinel:
+    description: Main SentinelAC command
+    usage: /sentinel <subcommand>
+    aliases: [sac, anticheat]
+
+permissions:
+  sentinelac.*:
+    description: All SentinelAC permissions
+    default: op
+    children:
+      sentinelac.command.*: true
+      sentinelac.alerts: true
+      sentinelac.exempt: true
+      
+  sentinelac.command.*:
+    description: All SentinelAC commands
+    default: op
+    children:
+      sentinelac.command.help: true
+      sentinelac.command.info: true
+      sentinelac.command.reload: true
+      sentinelac.command.alerts: true
+      sentinelac.command.violations: true
+      sentinelac.command.stats: true
+      sentinelac.command.debug: true
+      sentinelac.command.webhook: true
+      
+  sentinelac.command.help:
+    description: Access to help command
+    default: true
+    
+  sentinelac.command.info:
+    description: Access to info command
+    default: op
+    
+  sentinelac.command.reload:
+    description: Access to reload command
+    default: op
+    
+  sentinelac.command.alerts:
+    description: Access to alerts command
+    default: op
+    
+  sentinelac.command.violations:
+    description: Access to violations command
+    default: op
+    
+  sentinelac.command.stats:
+    description: Access to stats command
+    default: op
+    
+  sentinelac.command.debug:
+    description: Access to debug command
+    default: op
+    
+  sentinelac.command.webhook:
+    description: Access to webhook command
+    default: op
+    
+  sentinelac.alerts:
+    description: Receive SentinelAC alerts
+    default: op
+    
+  sentinelac.exempt:
+    description: Exempt from all checks
+    default: false

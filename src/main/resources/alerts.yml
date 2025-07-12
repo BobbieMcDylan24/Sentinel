@@ -1,0 +1,43 @@
+# SentinelAC Alert Configuration
+# Customize alert messages and formats
+
+alerts:
+  # Default alert format
+  default:
+    format: "&cSentinelAC &7» &f{player} &cfailed &f{check} &7({violations} violations) &8[{ping}ms, {tps}TPS]"
+    
+  # Movement check alerts
+  movement:
+    speed:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fSpeed &7({violations} VL) &8[{details}]"
+    fly:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fFly &7({violations} VL) &8[{details}]"
+    nofall:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fNoFall &7({violations} VL) &8[{details}]"
+      
+  # Combat check alerts
+  combat:
+    killaura:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fKillAura &7({violations} VL) &8[{details}]"
+    reach:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fReach &7({violations} VL) &8[{details}]"
+    autoclicker:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fAutoClicker &7({violations} VL) &8[{details}]"
+      
+  # Interaction check alerts
+  interaction:
+    fastbreak:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fFastBreak &7({violations} VL) &8[{details}]"
+    fastplace:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fFastPlace &7({violations} VL) &8[{details}]"
+    scaffold:
+      format: "&cSentinelAC &7» &f{player} &cfailed &fScaffold &7({violations} VL) &8[{details}]"
+      
+  # Punishment alerts
+  punishment:
+    kick:
+      format: "&cSentinelAC &7» &fKicked &c{player} &7for &f{check} &7({violations} violations)"
+    ban:
+      format: "&cSentinelAC &7» &fBanned &c{player} &7for &f{check} &7({violations} violations)"
+    setback:
+      format: "&cSentinelAC &7» &fSet back &e{player} &7for &f{check}"

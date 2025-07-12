@@ -1,0 +1,72 @@
+# SentinelAC Configuration File
+# Advanced Anti-Cheat for Minecraft Servers
+
+# General Settings
+general:
+  # Enable debug mode for detailed logging
+  debug: false
+  
+  # Enable asynchronous check processing for better performance
+  async-checks: true
+  
+  # Maximum ping before player is considered lagging (in ms)
+  max-ping: 1000
+  
+  # Permission node for check exemption
+  check-exempt-permission: "sentinelac.exempt"
+
+# Threading Configuration
+threading:
+  # Number of threads for packet processing
+  packet-thread-size: 2
+  
+  # Number of threads for check processing
+  check-thread-size: 4
+
+# Violation Management
+violations:
+  # Maximum violations before taking action
+  max-violations: 10
+  
+  # Time in seconds before violations start to reset
+  violation-reset-time: 300
+  
+  # Total violations before automatic ban
+  auto-ban-threshold: 15
+
+# Alert System
+alerts:
+  # Enable/disable alert system
+  enabled: true
+  
+  # Send alerts to console
+  console: true
+  
+  # Permission for staff to receive alerts
+  staff-permission: "sentinelac.alerts"
+  
+  # Webhook Configuration
+  webhook:
+    enabled: false
+    url: ""
+
+# Performance Settings
+performance:
+  # Enable lag compensation
+  lag-compensation: true
+  
+  # Minimum TPS before considering server lagging
+  min-tps: 18.0
+  
+  # Check processing interval in ticks
+  check-interval: 1
+
+# Database Settings (for future use)
+database:
+  enabled: false
+  type: "sqlite"
+  host: "localhost"
+  port: 3306
+  database: "sentinelac"
+  username: "root"
+  password: ""

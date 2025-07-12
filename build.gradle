@@ -1,0 +1,116 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.sentinelac'
+version = '1.0.0'
+description = 'Advanced Anti-Cheat for Minecraft based on GrimAC architecture with Vulcan-style configuration'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'placeholderapi'
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+    maven {
+        name = 'dmulloy2-repo'
+        url = 'https://repo.dmulloy2.net/repository/public/'
+    }
+}
+
+dependencies {
+    // Spigot API
+    compileOnly 'org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT'
+    
+    // Paper API
+    compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+    
+    // ProtocolLib
+    compileOnly 'com.comphenix.protocol:ProtocolLib:5.1.0'
+    
+    // PlaceholderAPI
+    compileOnly 'me.clip:placeholderapi:2.11.5'
+    
+    // Netty for packet handling
+    compileOnly 'io.netty:netty-all:4.1.85.Final'
+    
+    // Annotations
+    compileOnly 'org.jetbrains:annotations:24.0.1'
+    
+    // YAML Configuration
+    compileOnly 'org.yaml:snakeyaml:2.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-parameters']
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    archiveFileName = "SentinelAC-${project.version}.jar"
+    
+    // Relocate dependencies to avoid conflicts
+    relocate 'org.yaml.snakeyaml', 'com.sentinelac.libs.snakeyaml'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    expand props
+    filteringCharset 'UTF-8'
+}
+
+// Set the default task to build
+defaultTasks 'clean', 'shadowJar'
+
+// Clean task
+clean {
+    delete 'build'
+}
+
+// Custom task for development
+task dev {
+    group = 'development'
+    description = 'Builds the plugin for development'
+    dependsOn shadowJar
+    
+    doLast {
+        println "SentinelAC ${project.version} built successfully!"
+        println "Output: build/libs/SentinelAC-${project.version}.jar"
+    }
+}
+
+// Test server task (optional)
+task testServer {
+    group = 'development'
+    description = 'Copy built jar to test server'
+    dependsOn shadowJar
+    
+    doLast {
+        def testServerPath = project.findProperty('testServerPath')
+        if (testServerPath) {
+            copy {
+                from "build/libs/SentinelAC-${project.version}.jar"
+                into "${testServerPath}/plugins"
+            }
+            println "Copied to test server: ${testServerPath}/plugins"
+        } else {
+            println "Set testServerPath property to copy to test server"
+        }
+    }
+}

@@ -1,0 +1,66 @@
+# SentinelAC Check Configuration
+# Configure individual check settings
+
+checks:
+  # Movement Checks
+  speed:
+    enabled: true
+    max-violations: 5
+    threshold: 0.3
+    
+  fly:
+    enabled: true
+    max-violations: 3
+    max-air-time: 3000
+    
+  nofall:
+    enabled: true
+    max-violations: 5
+    min-fall-distance: 3.0
+    
+  step:
+    enabled: true
+    max-violations: 5
+    max-step-height: 0.6
+    
+  # Combat Checks
+  killaura:
+    enabled: true
+    max-violations: 3
+    max-angle: 90.0
+    
+  reach:
+    enabled: true
+    max-violations: 5
+    max-reach: 3.2
+    
+  autoclicker:
+    enabled: true
+    max-violations: 5
+    max-cps: 20
+    
+  # Interaction Checks
+  fastbreak:
+    enabled: true
+    max-violations: 5
+    break-speed-multiplier: 1.2
+    
+  fastplace:
+    enabled: true
+    max-violations: 5
+    place-delay: 50
+    
+  scaffold:
+    enabled: true
+    max-violations: 3
+    max-angle: 45.0
+    
+  # Packet Checks
+  timer:
+    enabled: true
+    max-violations: 5
+    balance-threshold: 50
+    
+  badpackets:
+    enabled: true
+    max-violations: 10
