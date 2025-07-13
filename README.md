@@ -4,11 +4,10 @@ Advanced Anti-Cheat plugin for Minecraft servers, inspired by GrimAC architectur
 
 ## Features
 
-- **Asynchronous/Multithreaded Design**: Based on GrimAC's architecture for optimal performance
 - **Packet-Level Analysis**: Uses ProtocolLib for deep packet inspection
 - **Comprehensive Check System**: Movement, combat, and interaction checks
-- **Advanced Violation Management**: Smart violation tracking with automatic actions
-- **Flexible Alert System**: Console, in-game, and webhook notifications
+- **Violation Management**: Smart violation tracking with automatic actions
+- **Alert System**: Console, in-game, and webhook notifications
 - **Lag Compensation**: Intelligent handling of server and client lag
 - **Exemption System**: Permission-based and temporary exemptions
 
