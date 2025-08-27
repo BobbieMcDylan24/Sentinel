@@ -1,6 +1,9 @@
 # SentinelAC
 
 Advanced Anti-Cheat plugin for Minecraft servers, inspired by GrimAC architecture with Vulcan-style configuration.
+Originally developed by EyeSaberYT, this a fork of his work to add new checks, and other amazing features for an minecraft Anticheat.
+
+This fork is in compliance with the set MIT License on EyeSaberYT's original repository.
 
 ## Features
 
