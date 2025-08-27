@@ -164,7 +164,7 @@ public class NoFallCheck extends Check {
         // Apply feather falling enchantment
         if (player.getInventory().getBoots() != null) {
             int featherFalling = player.getInventory().getBoots().getEnchantmentLevel(
-                org.bukkit.enchantments.Enchantment.PROTECTION_FALL);
+                org.bukkit.enchantments.Enchantment.FEATHER_FALLING);
             if (featherFalling > 0) {
                 damage *= Math.max(0, 1.0 - (featherFalling * FEATHER_FALLING_REDUCTION));
             }
@@ -216,7 +216,7 @@ public class NoFallCheck extends Check {
                material.name().contains("CARPET") ||
                material == Material.SOUL_SAND ||
                material == Material.FARMLAND ||
-               material == Material.GRASS_PATH ||
+               material == Material.LEGACY_GRASS_PATH ||
                material.name().contains("FENCE") ||
                material.name().contains("WALL");
     }

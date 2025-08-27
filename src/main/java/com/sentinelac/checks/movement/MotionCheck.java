@@ -8,7 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
-
 public class MotionCheck extends Check {
 
     private static final double MAX_MOTION_CHANGE = 2.0;
@@ -89,7 +88,7 @@ public class MotionCheck extends Check {
         // Apply knockback resistance if available
         if (player.getInventory().getChestplate() != null) {
             int knockbackResistance = player.getInventory().getChestplate().getEnchantmentLevel(
-                org.bukkit.enchantments.Enchantment.KNOCKBACK_RESISTANCE);
+                org.bukkit.enchantments.Enchantment.KNOCKBACK);
             if (knockbackResistance > 0) {
                 double resistance = knockbackResistance * 0.1;
                 motion.multiply(1.0 - resistance);
@@ -103,14 +102,14 @@ public class MotionCheck extends Check {
             motion.setZ(motion.getZ() * (1.0 + (amplifier + 1) * 0.2));
         }
         
-        if (player.hasPotionEffect(PotionEffectType.SLOW)) {
-            int amplifier = player.getPotionEffect(PotionEffectType.SLOW).getAmplifier();
+        if (player.hasPotionEffect(PotionEffectType.SLOWNESS)) {
+            int amplifier = player.getPotionEffect(PotionEffectType.SLOWNESS).getAmplifier();
             motion.setX(motion.getX() * (1.0 - (amplifier + 1) * 0.15));
             motion.setZ(motion.getZ() * (1.0 - (amplifier + 1) * 0.15));
         }
         
-        if (player.hasPotionEffect(PotionEffectType.JUMP)) {
-            int amplifier = player.getPotionEffect(PotionEffectType.JUMP).getAmplifier();
+        if (player.hasPotionEffect(PotionEffectType.JUMP_BOOST)) {
+            int amplifier = player.getPotionEffect(PotionEffectType.JUMP_BOOST).getAmplifier();
             if (motion.getY() > 0) {
                 motion.setY(motion.getY() + (amplifier + 1) * 0.1);
             }
@@ -225,7 +224,7 @@ public class MotionCheck extends Check {
         
         data.setCheckData("motion.history", motionHistory);
         
-        // Check for repeating motion patterns (bot-like behavior)
+        // Check for repeating motion patterns (bot-like behaviour)
         if (motionHistory.size() >= 10) {
             checkRepeatingPattern(player, data, motionHistory);
         }
@@ -294,7 +293,7 @@ public class MotionCheck extends Check {
                material.name().contains("CARPET") ||
                material == Material.SOUL_SAND ||
                material == Material.FARMLAND ||
-               material == Material.GRASS_PATH ||
+               material == Material.LEGACY_GRASS_PATH ||
                material.name().contains("FENCE") ||
                material.name().contains("WALL");
     }

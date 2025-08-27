@@ -153,8 +153,8 @@ public class StepCheck extends Check {
         double baseStepHeight = MAX_STEP_HEIGHT;
         
         // Apply jump boost effect
-        if (player.hasPotionEffect(PotionEffectType.JUMP)) {
-            int amplifier = player.getPotionEffect(PotionEffectType.JUMP).getAmplifier();
+        if (player.hasPotionEffect(PotionEffectType.JUMP_BOOST)) {
+            int amplifier = player.getPotionEffect(PotionEffectType.JUMP_BOOST).getAmplifier();
             baseStepHeight += (amplifier + 1) * 0.1; // Small increase for step height
         }
         
@@ -178,8 +178,8 @@ public class StepCheck extends Check {
         double baseJumpHeight = MAX_JUMP_HEIGHT;
         
         // Apply jump boost effect
-        if (player.hasPotionEffect(PotionEffectType.JUMP)) {
-            int amplifier = player.getPotionEffect(PotionEffectType.JUMP).getAmplifier();
+        if (player.hasPotionEffect(PotionEffectType.JUMP_BOOST)) {
+            int amplifier = player.getPotionEffect(PotionEffectType.JUMP_BOOST).getAmplifier();
             baseJumpHeight += (amplifier + 1) * 0.5;
         }
         
@@ -240,7 +240,7 @@ public class StepCheck extends Check {
                material.name().contains("CARPET") ||
                material == Material.SOUL_SAND ||
                material == Material.FARMLAND ||
-               material == Material.GRASS_PATH ||
+               material == Material.LEGACY_GRASS_PATH ||
                material.name().contains("FENCE") ||
                material.name().contains("WALL") ||
                material == Material.COBBLESTONE_WALL;
